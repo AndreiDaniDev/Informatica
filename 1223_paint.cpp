@@ -1,5 +1,6 @@
 #include <fstream>
 ///https://www.pbinfo.ro/probleme/1233/paint
+///https://www.pbinfo.ro/detalii-evaluare/51441713
 using namespace std;
 ifstream in("paint.in");
 ofstream out("paint.out");

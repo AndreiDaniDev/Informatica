@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 const int dim = 200002;
+///https://codeforces.com/contest/816/submission/265977111
 int n, k, q, smen[dim], smenQuery[dim], st, dr, t_;
 int main(){
     ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);

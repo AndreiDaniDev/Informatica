@@ -1,9 +1,7 @@
 #include <fstream>
 #include <utility>
-#include <queue>
 #include <deque>
 #include <vector>
-#include <iostream>
 #include <algorithm>
 #define cord pair<int,int>
 #define x first
@@ -12,12 +10,12 @@ using namespace std;
 ifstream in("labir.in");
 ofstream out("labir.out");
 ///https://www.pbinfo.ro/probleme/700/labir
-///https://www.pbinfo.ro/detalii-evaluare/51463895
-///https://kilonova.ro/submissions/393673
+///https://www.pbinfo.ro/detalii-evaluare/51464814
+///https://kilonova.ro/submissions/393730
 int n, m, q, posX = 3, posY = 3, posXX, posYY; cord startt, endd, perete, dt, d;
 vector < cord > px, py; bool margineX = 0, margineXX = 0, margineY = 0, margineYY = 0;
-bool vizitat[2502][2502], dinamita[2502][2502]; int smen[2502][2502];
-const int dx[] = {-1,0,1,0}, dy[] = {0, -1, 0, 1};
+const int dx[] = {-1,0,1,0}, dy[] = {0, 1, 0, -1}, dim = 3002;
+bool dinamita[dim][dim]; int smen[dim][dim];
 
 bool sortNorm(pair <int, int> a, pair <int, int> b){ return a.first < b.first; }
 bool sortIndex(pair <int, int> a, pair <int, int> b){ return a.second < b.second; }
@@ -32,21 +30,19 @@ void verifBordura(cord obj){
 
 int LeeCost(cord startt, cord endd){
 
-    deque < cord > q; q.push_front(startt);
+    for(int i = 1; i <= n; i++) for(int j = 1; j <= m; j++) smen[i][j] = (1 << 30);
+    deque < cord > q; q.push_front(startt); smen[startt.x][startt.y] = 0;
     for(; !q.empty(); ){
         d = q.front(); q.pop_front();
         for(int i = 0; i < 4; i++){
             dt = make_pair(d.x + dx[i], d.y + dy[i]);
-            if(ok(dt) && vizitat[d.x][d.y] == false){
-                if(dinamita[dt.x][dt.y]){
-                    smen[dt.x][dt.y] = smen[d.x][d.y] + 1, q.push_back(dt);
-            	}else{
-                    if(smen[dt.x][dt.y] == 0) smen[dt.x][dt.y] = (smen[d.x][d.y]), q.push_front(dt);
-                    else smen[dt.x][dt.y] = min(smen[dt.x][dt.y], smen[d.x][d.y]), q.push_front(dt);
+            if(ok(dt)){
+                if((smen[dt.x][dt.y] > smen[d.x][d.y] + dinamita[dt.x][dt.y])){
+                    smen[dt.x][dt.y] = smen[d.x][d.y] + dinamita[d.x][d.y];
+                    (dinamita[dt.x][dt.y]) ? q.push_back(dt) : q.push_front(dt);
                 }
             }
         }
-        vizitat[d.x][d.y] = true;
     }
 
     return smen[endd.x][endd.y];
@@ -101,8 +97,6 @@ int main(){
 
     sort(px.begin(), px.end(), sortIndex);
     sort(py.begin(), py.end(), sortIndex);
-
-
 
     for(int i = 2; i < px.size(); i++)
         dinamita[px[i].first][py[i].first] = 1;

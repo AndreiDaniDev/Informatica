@@ -13,10 +13,10 @@ const Mat initMat={{{1, 1},{1, 0}}};
 
 Mat prod(Mat a,Mat b){
     Mat ret;
-    ret.mat[0][0] = (1LL * a.mat[0][0] * b.mat[0][0] + 1LL * a.mat[0][1] * b.mat[1][0] ) % 666013;
-    ret.mat[0][1] = (1LL * a.mat[0][0] * b.mat[0][1] + 1LL * a.mat[0][1] * b.mat[1][1] ) % 666013;
-    ret.mat[1][0] = (1LL * a.mat[1][0] * b.mat[0][0] + 1LL * a.mat[1][1] * b.mat[1][0] ) % 666013;
-    ret.mat[1][1] = (1LL * a.mat[1][0] * b.mat[0][1] + 1LL * a.mat[1][1] * b.mat[1][1] ) % 666013;
+    ret.mat[0][0] = (1LL * a.mat[0][0] * b.mat[0][0] + 1LL * a.mat[0][1] * b.mat[1][0]) % 666013;
+    ret.mat[0][1] = (1LL * a.mat[0][0] * b.mat[0][1] + 1LL * a.mat[0][1] * b.mat[1][1]) % 666013;
+    ret.mat[1][0] = (1LL * a.mat[1][0] * b.mat[0][0] + 1LL * a.mat[1][1] * b.mat[1][0]) % 666013;
+    ret.mat[1][1] = (1LL * a.mat[1][0] * b.mat[0][1] + 1LL * a.mat[1][1] * b.mat[1][1]) % 666013;
     return ret;
 }
 

@@ -28,7 +28,6 @@ int main(){
         if(lmax < dp[i])
             lmax = dp[i], poss = i;
 
-	///out<<n - lmax<<"\n"<<n;
     out<<n<<"\n"<<n - lmax<<"\n";
 
     sol.push_back(poss);

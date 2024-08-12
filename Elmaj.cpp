@@ -3,6 +3,7 @@ using namespace std;
 ifstream in("elmaj.in");
 ofstream out("elmaj.out");
 ///https://www.infoarena.ro/problema/elmaj
+///https://www.infoarena.ro/job_detail/3240033
 const int sizee = (1 << 6);
 char buffer[sizee];
 int index = sizee - 1;

@@ -5,6 +5,7 @@ using namespace std;
 ifstream in("deque.in");
 ofstream out("deque.out");
 int n, k, x; int64_t sum; deque < pair <int, int> > dq;
+///https://www.infoarena.ro/job_detail/3242125
 int main(){
     in>>n>>k;
     for(int i = 1; i <= k; i++){
